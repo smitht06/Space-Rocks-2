@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8xxi6alejye5"]
+
+[ext_resource type="Script" path="res://CollisionShape2D.gd" id="1_llyqw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4lcbx"]
+bounce = 1.0
+
+[node name="Rock" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_4lcbx")
+linear_damp_mode = 1
+angular_damp_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+script = ExtResource("1_llyqw")
