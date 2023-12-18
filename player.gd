@@ -26,9 +26,9 @@ func change_state(new_state):
 		ALIVE:
 			$CollisionShape2D.set_deferred("disabled", false)
 		INVULNERABLE:
-			$CollisionShape2d.set_deferred("disabled", true)
+			$CollisionShape2D.set_deferred("disabled", true)
 		DEAD:
-			$CollisionShape2d.set_deferred("disabled", true)
+			$CollisionShape2D.set_deferred("disabled", true)
 	state = new_state
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
