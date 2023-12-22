@@ -2,12 +2,34 @@ extends Node2D
 @export var rock_scene : PackedScene
 
 var screensize = Vector2.ZERO
+var level = 0
+var score = 0
+var playing = false
+
+func new_game():
+	#remove old rocks from previous game
+	get_tree().call_group("rocks", "queue_free")
+	level = 0
+	score = 0
+	$HUD.update_score(score)
+	$Player.reset()
+	$HUD.show_message("Get Ready!")
+	await $HUD/Timer.timeout
+	playing = true 
+
+func new_level():
+	level += 1
+	$HUD.show_message("Wave %s" % level)
+	for i in level:
+		spawn_rock(3)
+		
+func game_over():
+	playing = false
+	$HUD.game_over()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
-	for i in 3:
-		spawn_rock(3)
 		
 func spawn_rock(size, pos=null, vel=null):
 	if pos == null:
@@ -23,7 +45,11 @@ func spawn_rock(size, pos=null, vel=null):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if not playing:
+		return
+	if get_tree().get_nodes_in_group("rocks").size() == 0:
+		new_level()
+
 
 func _on_rock_exploded(size, radius, pos, vel):
 	if size <= 1:
@@ -33,3 +59,7 @@ func _on_rock_exploded(size, radius, pos, vel):
 		var newpos = pos + dir * radius
 		var newvel = dir * vel.length() * 1.1
 		spawn_rock(size - 1, newpos, newvel)
+
+
+
+

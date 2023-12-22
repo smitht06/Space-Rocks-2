@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://74jk8cko03c"]
+[gd_scene load_steps=7 format=3 uid="uid://74jk8cko03c"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1qw7n"]
 [ext_resource type="Texture2D" uid="uid://cr33h6u6qxwv0" path="res://assets/space_background.png" id="1_ilisr"]
 [ext_resource type="PackedScene" uid="uid://b8xxi6alejye5" path="res://rock.tscn" id="2_wi8co"]
 [ext_resource type="PackedScene" uid="uid://cqce4obaoqeo4" path="res://player.tscn" id="4_ur2nm"]
+[ext_resource type="PackedScene" uid="uid://1qcxeugnlhx6" path="res://hud.tscn" id="5_53mg1"]
 
 [sub_resource type="Curve2D" id="Curve2D_o1h2o"]
 _data = {
@@ -29,3 +30,9 @@ rotation = 0.00668567
 
 [node name="Player" parent="." instance=ExtResource("4_ur2nm")]
 position = Vector2(56, 104)
+
+[node name="HUD" parent="." instance=ExtResource("5_53mg1")]
+
+[connection signal="dead" from="Player" to="." method="game_over"]
+[connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

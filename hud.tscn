@@ -1,9 +1,75 @@
-[gd_scene format=3 uid="uid://1qcxeugnlhx6"]
+[gd_scene load_steps=7 format=3 uid="uid://1qcxeugnlhx6"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_043yy"]
+[ext_resource type="FontFile" uid="uid://c8sndqtoahjx7" path="res://assets/kenvector_future_thin.ttf" id="2_vgle3"]
+[ext_resource type="Texture2D" uid="uid://bvru0qv2omenk" path="res://assets/player_small.png" id="3_dumqb"]
+[ext_resource type="Texture2D" uid="uid://dynub5y3t85wt" path="res://assets/play_button.png" id="4_t5reu"]
+[ext_resource type="Texture2D" uid="uid://u8p82qo8w44h" path="res://assets/play_button_h.png" id="5_q38tt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ul0hq"]
+font = ExtResource("2_vgle3")
+font_size = 64
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_043yy")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_ul0hq")
+
+[node name="LivesCounter" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="L1" type="TextureRect" parent="MarginContainer/HBoxContainer/LivesCounter"]
+layout_mode = 2
+texture = ExtResource("3_dumqb")
+stretch_mode = 5
+
+[node name="L2" type="TextureRect" parent="MarginContainer/HBoxContainer/LivesCounter"]
+layout_mode = 2
+texture = ExtResource("3_dumqb")
+stretch_mode = 5
+
+[node name="L3" type="TextureRect" parent="MarginContainer/HBoxContainer/LivesCounter"]
+layout_mode = 2
+texture = ExtResource("3_dumqb")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Message" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_t5reu")
+texture_hover = ExtResource("5_q38tt")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
