@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://1qcxeugnlhx6"]
+[gd_scene load_steps=9 format=3 uid="uid://1qcxeugnlhx6"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_043yy"]
 [ext_resource type="FontFile" uid="uid://c8sndqtoahjx7" path="res://assets/kenvector_future_thin.ttf" id="2_vgle3"]
@@ -9,6 +9,13 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ul0hq"]
 font = ExtResource("2_vgle3")
 font_size = 64
+
+[sub_resource type="SystemFont" id="SystemFont_n531b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7i1d"]
+line_spacing = 2.945
+font = SubResource("SystemFont_n531b")
+font_size = 60
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_043yy")
@@ -65,6 +72,8 @@ theme_override_constants/separation = 100
 
 [node name="Message" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+label_settings = SubResource("LabelSettings_v7i1d")
+horizontal_alignment = 1
 
 [node name="StartButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2

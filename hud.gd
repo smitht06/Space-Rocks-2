@@ -10,6 +10,8 @@ func show_message(text):
 	message.text = text
 	message.show()
 	$Timer.start()
+	await $Timer.timeout
+	message.hide()
 	
 func update_score(value):
 	score_label.text = str(value)
