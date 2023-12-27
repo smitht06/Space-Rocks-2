@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://sk2nnhd52jj"]
+
+[sub_resource type="Curve2D" id="Curve2D_y64j7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -80, 240, -143.028, 321.017, 143.028, -321.017, 168, 472, -30.2381, -114.653, 30.2381, 114.653, 584, 504, 0, 0, 0, 0, 896, 344, 107.093, 112.133, -107.093, -112.133, 984, 128, 0, 0, 0, 0, 520, -72)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_dd0un"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 272, -88, -206.475, -140.007, 206.475, 140.007, 168, 144, 251.73, 213.546, -251.73, -213.546, 552, 112, 0, 0, 0, 0, 496, 264, -371.938, 289.914, 371.938, -289.914, 744, 336, 189.505, 152.735, -189.505, -152.735, 984, 544, 209.304, 120.208, -209.304, -120.208, 808, 136, 0, 0, 0, 0, 1104, -104)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_7s8sa"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 280, 768, -331.126, -302.658, 331.126, 302.658, 824, 512, 364.089, 94.3934, -364.089, -94.3934, 704, 120, 395.553, 373.078, -395.553, -373.078, 192, 256, -371.58, -47.9458, 371.58, 47.9458, 1064, 48, -1000.87, -458.482, 1000.87, 458.482, 1200, 712)
+}
+point_count = 6
+
+[node name="EnemyPaths" type="Node"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_y64j7")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dd0un")
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7s8sa")
