@@ -15,6 +15,7 @@ var rotation_dir = 0
 var screensize = Vector2.ZERO
 var reset_pos = false
 var lives = 0: set =  set_lives
+var playing = true 
 
 enum {INIT, ALIVE, INVULNERABLE, DEAD}
 
@@ -69,6 +70,7 @@ func get_input():
 		thrust = transform.x * engine_power
 	if Input.is_action_pressed("shoot") and can_shoot:
 		shoot()
+			
 	rotation_dir = Input.get_axis("rotate_left", "rotate_right")
 	
 func shoot():
