@@ -17,5 +17,10 @@ def index():
     return send_from_directory(".", "space-rocks.html")
 
 
+@app.route("/js/<path:filename>")
+def send_js(filename):
+    return send_from_directory(".", filename)
+
+
 if __name__ == "__main__":
     app.run(port=8000)
