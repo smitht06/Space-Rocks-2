@@ -15,10 +15,8 @@ func _ready():
 	path.add_child(follow)
 	follow.loop = false
 
-
 func _on_gun_cooldown_timeout():
 	shoot_pulse(3, .15)
-
 
 func _physics_process(delta):
 	rotation += deg_to_rad(rotation_speed) * delta
@@ -27,7 +25,6 @@ func _physics_process(delta):
 	if follow.progress_ratio >= 1:
 		queue_free()
 		
-
 func shoot():
 	var dir = global_position.direction_to(target.global_position)
 	dir = dir.rotated(randf_range(-bullet_spread, bullet_spread))
