@@ -9,6 +9,7 @@ var playing = false
 
 func new_game():
 	#remove old rocks from previous game
+	$Music.play()
 	get_tree().call_group("rocks", "queue_free")
 	level = 0
 	score = 0
@@ -19,6 +20,7 @@ func new_game():
 	playing = true 
 
 func new_level():
+	$LevelUpSound.play()
 	$EnemyTimer.start(randf_range(5,10))
 	level += 1
 	$HUD.show_message("Wave %s" % level)
@@ -29,6 +31,7 @@ func new_level():
 func game_over():
 	playing = false
 	$HUD.game_over()
+	$Music.stop()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,6 +58,7 @@ func _process(delta):
 
 
 func _on_rock_exploded(size, radius, pos, vel):
+	$ExplosionSound.play()
 	if size <= 1:
 		return
 	for offset in [-1, 1]:

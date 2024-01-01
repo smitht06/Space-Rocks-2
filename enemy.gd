@@ -40,6 +40,7 @@ func shoot_pulse(n, delay):
 	for i in n:
 		shoot()
 		await get_tree( ).create_timer(delay).timeout
+		$ShootingSound.play()
 		
 
 func take_damage(amount):
@@ -56,6 +57,7 @@ func explode():
 	$Explosion.show()
 	$Explosion/AnimationPlayer.play("explosion")
 	await $Explosion/AnimationPlayer.animation_finished
+	$ExplosionSound.play()
 	queue_free()
 	
 	
